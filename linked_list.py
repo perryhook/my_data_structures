@@ -48,6 +48,7 @@ class l_list(object):
             self.header_node.next = self.header_node.next.next
             self.length -= 1
             return val
+
         else:
             return None
 
@@ -61,6 +62,8 @@ class l_list(object):
         return self.header_node.search_nodes(val)
 
     def remove(self, rm_node):
+        self.header_node.remove(rm_node)
+        """ # iterative way
         current_node = self.header_node
         while current_node.next is not None:
             if current_node.next is rm_node:
@@ -68,3 +71,4 @@ class l_list(object):
                 break
             else:
                 current_node = current_node.next
+        """
