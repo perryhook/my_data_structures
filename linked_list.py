@@ -62,10 +62,7 @@ class l_list(object):
 
     def remove(self, rm_node):
         current_node = self.header_node
-#        print "starting remove. We want to remove {0} and the current_node.val = {1}".format(rm_node.val, current_node.val)
         while current_node.next is not None:
-#            print "in while loop"
-#            print "val is: {}".format(current_node.next.val)
             if current_node.next is rm_node:
                 current_node.next = current_node.next.next
                 break

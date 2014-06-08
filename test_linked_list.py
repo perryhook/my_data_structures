@@ -62,7 +62,7 @@ def test_search(create_list):
 def test_remove(create_list):
     test_list = create_list
     test_val = 923423748
-    test_node = test_list.insert(test_val)
+    test_list.insert(test_val)
     assert test_list.search(test_val) is not None
-    test_list.remove(test_node)
+    test_list.remove(test_list.search(test_val))
     assert test_list.search(test_val) is None
