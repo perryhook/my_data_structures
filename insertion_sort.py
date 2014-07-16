@@ -41,30 +41,24 @@ if __name__ == '__main__':
         insertion_sort.sort(l)
         """
 
-    plt.hold(True)
     descend_results = []
+    ascend_results = []
     for size in xrange(50, 2501, 50):
-        time = timeit.timeit(
+        descend_time = timeit.timeit(
             descend_case.format(size),
             setup="import insertion_sort",
             number=repetitions
         )
-        descend_results.append((size, time))
-        # print "result: ({}, {})".format(size, time)
+        descend_results.append((size, descend_time))
 
-    ascend_results = []
-    for size in xrange(50, 2501, 50):
-        time = timeit.timeit(
+        ascend_time = timeit.timeit(
             ascend_case.format(size),
             setup="import insertion_sort",
             number=repetitions
         )
-        ascend_results.append((size, time))
-        # print "result({}, {})".format(size, time)
+        ascend_results.append((size, ascend_time))
 
-#    print descend_results
-#    print ascend_results
-
+    plt.hold(True)
     for i in range(len(descend_results)):
         n_descend = descend_results[i][0]
         time_descend = descend_results[i][1]
