@@ -60,10 +60,8 @@ if __name__ == '__main__':
 
     plt.hold(True)
     for i in range(len(descend_results)):
-        n_descend = descend_results[i][0]
-        time_descend = descend_results[i][1]
-        n_ascend = ascend_results[i][0]
-        time_ascend = ascend_results[i][1]
+        n_descend, time_descend = descend_results[i]
+        n_ascend, time_ascend = ascend_results[i]
         plt.plot(n_descend, time_descend, 'bo')
         plt.plot(n_ascend, time_ascend, 'ro')
     plt.show()
