@@ -28,7 +28,7 @@ if __name__ == '__main__':
         setup="import insertion_sort, random",
         number=repetitions
     )
-    print "1000 item random int list with {} repetions takes time {}".format(
+    print "1000 item random int list with {} repetitions takes time {}".format(
         repetitions, long_random_time)
 
     descend_case = """
