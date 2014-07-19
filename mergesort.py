@@ -3,7 +3,7 @@ adapted from 'The Object of Data Abstraction and Structures Using Java'
 """
 
 
-def merge_sort(a):
+def sort(a):
     do_merge_sort(a, 0, len(a)-1)
 
 
