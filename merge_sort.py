@@ -50,7 +50,7 @@ if __name__ == '__main__':
     import timeit
     import matplotlib.pyplot as plt
 
-    repetitions = 10
+    repetitions = 100
 
     long_random_list_test = """
         l = [random.randint(-99999,99999) for i in xrange(0, 1000)]
