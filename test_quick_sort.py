@@ -1,4 +1,4 @@
-import quick_sort2 as quick_sort
+import quick_sort as quick_sort
 from random import random, randint
 
 
