@@ -1,6 +1,8 @@
 from random import randint
 '''
-www.csanimated.com/animation.php?2t=Quicksort
+adapted from 'The Object of Data Abstraction and Structures Using Java'
+modified to do insertion sort for small lists (speed optimization) and select
+random pivot
 '''
 
 
@@ -9,13 +11,13 @@ def sort(A):
 
 
 def quicksort(A, lo, hi):
-    # if small list, use insertion_sort for speed
-    if hi - lo < 16:
-        insertion_sort(A, lo, hi)
     # 2 item list
-    elif hi-lo == 1:
+    if hi-lo == 1:
         if A[hi] < A[lo]:
             swap(A, lo, hi)
+    # else if small list, use insertion_sort for speed
+    elif hi - lo < 16:
+        insertion_sort(A, lo, hi)
     # otherwise do quicksort
     elif hi-lo > 1:
         p_idx = partition(A, lo, hi)
