@@ -69,11 +69,11 @@ if __name__ == '__main__':
 
     long_random_list_test = """
         l = [random.randint(-99999,99999) for i in xrange(0, 1000)]
-        quick_sort2.sort(l)
+        quick_sort.sort(l)
         """
     long_random_time = timeit.timeit(
         long_random_list_test,
-        setup="import quick_sort2, random",
+        setup="import quick_sort, random",
         number=repetitions
     )
     print "1000 item random int list with {} repetitions takes time {} with " \
@@ -81,34 +81,48 @@ if __name__ == '__main__':
 
     descend_case = """
         l = [i for i in xrange({}, 0, -1)]
-        quick_sort2.sort(l)
+        quick_sort.sort(l)
         """
 
     ascend_case = """
         l = [i for i in xrange(0, {})]
-        quick_sort2.sort(l)
+        quick_sort.sort(l)
+        """
+
+    same_case = """
+        l = [5 for i in xrange(0, {})]
+        quick_sort.sort(l)
         """
 
     descend_results = []
     ascend_results = []
+    same_results = []
     message = "{:.2%} of test list sizes done\r"
-    min_list_size = 500
-    max_list_size = 25000
-    increment = 500
+    min_list_size = 100
+    max_list_size = 1001
+    increment = 100
     for size in xrange(min_list_size, max_list_size+1, increment):
         descend_time = timeit.timeit(
             descend_case.format(size),
-            setup="import quick_sort2",
+            setup="import quick_sort",
             number=repetitions
         )
         descend_results.append((size, descend_time))
 
         ascend_time = timeit.timeit(
             ascend_case.format(size),
-            setup="import quick_sort2",
+            setup="import quick_sort",
             number=repetitions
         )
         ascend_results.append((size, ascend_time))
+
+        same_time = timeit.timeit(
+            same_case.format(size),
+            setup="import quick_sort",
+            number=repetitions
+        )
+        same_results.append((size, same_time))
+
         sys.stdout.write(message.format(size / float(max_list_size)))
         sys.stdout.flush()
 
@@ -116,6 +130,8 @@ if __name__ == '__main__':
     for i in range(len(descend_results)):
         n_descend, time_descend = descend_results[i]
         n_ascend, time_ascend = ascend_results[i]
+        n_same, time_same = same_results[i]
         plt.plot(n_descend, time_descend, 'bo')
         plt.plot(n_ascend, time_ascend, 'ro')
+        plt.plot(n_same, time_same, 'g^')
     plt.show()
